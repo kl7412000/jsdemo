@@ -1,31 +1,40 @@
-document.write(Date());
-let rows = [];
-for (let j = 0; j < 5; j++) {
-let numbers = [];
-while (true) {
-    let x = getRandomInt(1, 49);
-    if (!numbers.includes(x)) {
-    numbers.push(x);
+//document.write(Date());
+
+const dateEl=document.querySelector(".date");
+dateEl.innerText=Date();
+//console.log(dateEl);
+
+function getNumbers(num){
+    let rows = [];
+    for (let j = 0; j < num; j++) {
+    let numbers = [];
+    while (true) {
+        let x = getRandomInt(1, 49);
+        if (!numbers.includes(x)) {
+        numbers.push(x);
+        }
+        if (numbers.length == 6) {
+        break;
+        }
     }
-    if (numbers.length == 6) {
-    break;
-    }
+    //排序
+    numbers.sort(compare);
+    rows.push(numbers);
+    }   
+    return rows;
 }
-//排序
-numbers.sort(compare);
-rows.push(numbers);
-}
+
 //排序方法
 function compare(a, b) {
 return a - b;
 }
 console.log(rows);
-const lottoryE1emnt=document.querySelector("#lottory");
+const lottoryEl=document.querySelector("#lottory");
 
 for (let i = 0; i < rows.length; i++) {
     result = rows[i].join(",");
     console.log(result);
-    lottoryE1emnt.innerHTML+=`<h3>第${i + 1}組號碼:${result}</h3><hr>`
+    lottoryEl.innerHTML+=`<h3>第${i + 1}組號碼:${result}</h3><hr>`
     //document.write(`<h3>第${i + 1}組號碼:${result}</h3><hr>`;
 }
 /*
@@ -83,9 +92,23 @@ if (r == 49) {
 }
 }
 
-A="3.55";
-document.write(parseInt(A));
-document.write(Number(A));
+function getLottroy(){
+    const lottoryEl=document.querySelector("#lottory");
+    let num=prompt("樂透組數");
+    rows=getNumbers(num);
+    //total=0
+    lottoryEl.innerHTML="";
+    for (let i = 0; i < rows.length; i++) {
+        result = rows[i].join(",");
+        console.log(result);
+        lottoryEl.innerHTML+=`<h3>第${i + 1}組號碼:${result}</h3><hr>`
+        //document.write(`<h3>第${i + 1}組號碼:${result}</h3><hr>`;
+    }
+}
+
+//A="3.55";
+//document.write(parseInt(A));
+//document.write(Number(A));
 
 // object=>json
 let user={
