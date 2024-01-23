@@ -37,6 +37,20 @@ for (let i = 0; i < rows.length; i++) {
     lottoryEl.innerHTML+=`<h3>第${i + 1}組號碼:${result}</h3><hr>`
     //document.write(`<h3>第${i + 1}組號碼:${result}</h3><hr>`;
 }
+
+function getLottroy(){
+    const lottoryEl=document.querySelector("#lottory");
+    let num=prompt("樂透組數");
+    rows=getNumbers(num);
+    //total=0
+    lottoryEl.innerHTML="";
+    for (let i = 0; i < rows.length; i++) {
+        result = rows[i].join(",");
+        console.log(result);
+        lottoryEl.innerHTML+=`<h3>第${i + 1}組號碼:${result}</h3><hr>`
+        //document.write(`<h3>第${i + 1}組號碼:${result}</h3><hr>`;
+    }
+}
 /*
 let rows = [];
 //外迴圈(控制組數) =>產生五組號碼
@@ -92,19 +106,7 @@ if (r == 49) {
 }
 }
 
-function getLottroy(){
-    const lottoryEl=document.querySelector("#lottory");
-    let num=prompt("樂透組數");
-    rows=getNumbers(num);
-    //total=0
-    lottoryEl.innerHTML="";
-    for (let i = 0; i < rows.length; i++) {
-        result = rows[i].join(",");
-        console.log(result);
-        lottoryEl.innerHTML+=`<h3>第${i + 1}組號碼:${result}</h3><hr>`
-        //document.write(`<h3>第${i + 1}組號碼:${result}</h3><hr>`;
-    }
-}
+
 
 //A="3.55";
 //document.write(parseInt(A));
